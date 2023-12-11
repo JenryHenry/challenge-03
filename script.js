@@ -42,6 +42,30 @@ function generatePassword() {
   lengthPr();
   console.log(length);
   var pw = "";
+  var subSets = [];
+  if (lowPr === true) {
+    subSets.push(letters);
+  }
+  if (capPr === true) {
+    subSets.push(upper);
+  }
+  if (numPr === true) {
+    subSets.push(numbers);
+  }
+  if (spePr === true) {
+    subSets.push(special);
+  }
+  console.log(subSets);
+  for (let i = 0; i < length; i++) {
+    var subSetsIndex = Math.floor(Math.random() * subSets.length);
+    console.log(subSetsIndex);
+    var subSet = subSets[subSetsIndex];
+    console.log(subSet);
+    var characterIndex = Math.floor(Math.random() * subSet.length);
+    console.log(characterIndex);
+    pw = pw.concat(subSet[characterIndex]);
+    console.log(pw);
+  }
   // To create the password, I need to take the user input from the confirms to create a group of character types to draw from.
   // I will randomly choose one of these types, then choose a random character from its string.
   // I will then store this in the password variable.
@@ -49,6 +73,7 @@ function generatePassword() {
   // I will then store this character in the password variable.
   // I will repeat this until the character types are depleted.
   // Once depleted, I will repeat the process until the length of the password matches the user's number input.
+  console.log(pw);
   return pw;
 }
 // When I click the button, a series of prompts for password criteria pops up(lowercase, uppercase, numeric, special characters)
